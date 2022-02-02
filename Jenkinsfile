@@ -8,20 +8,11 @@ pipeline{
                 git 'https://github.com/shazforiot/HelloWorld-Springboot-App.git'
             }
         }
-        stage('Mavem Test'){
+        stage('Create Dockerimage'){
             steps{
-                sh 'mvn test'
+                sh 'docker build -t thetips4you/springboot:latest .'
             }
         }
-        stage('Maven Build'){
-            steps{
-                sh 'mvn package'
-            }
-        }
-        stage('Maven Deploy'){
-            steps{
-                echo "Deploying the war file to the server"
-            }
-        }
+              
     }
 }
